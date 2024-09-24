@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karbon Ayak İzi Hesaplayıcı</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/carbon-footprint.png" type="image/icon" />
+</head>
+<body>
+    <div class="container">
+        <h1><img src="/images/carbon-footprint.png" alt="Favicon" width="30"> <span style="color: rgb(57, 148, 19);">Karbon Ayak İzi</span> Hesaplama</h1>
+<p style="text-align: justify;">Karbon ayak izi hesaplaması, farklı faaliyetlerinizin (ulaşım, enerji tüketimi vb.) atmosfere saldığı karbondioksit (CO₂) miktarını tahmin etmek için yapılır. Hesaplama, genellikle bu faaliyetler için belirli emisyon faktörlerine dayalıdır. 
+    Bu faktörler, kullanılan enerji türü ve miktarına göre değişiklik gösterebilir.</p>
+        <div class="flex-container">
+
+            <!-- Hava Ulaşımı -->
+            <div class="flex-item">
+                <h2><img src="/images/airplane.png" alt="Icon" width="20"> Hava Ulaşımı</h2>
+                <label for="ucusSuresi">Uçuş Süresi (Tek Yön - Saat):</label>
+                <input type="number" id="ucusSuresi" value="0.5" step="0.5" min="0.5" max="20"><br>
+
+                <label for="ucusSayisi">Toplam Uçuş Sayısı:</label>
+                <button onclick="changeValue('ucusSayisi', -1)">-</button>
+                <input type="number" id="ucusSayisi" value="1" min="0">
+                <button onclick="changeValue('ucusSayisi', 1)">+</button><br>
+            </div>
+
+            <!-- Kara Ulaşımı -->
+            <div class="flex-item">
+                <h2><img src="/images/car.png" alt="Icon" width="20"> Kara Ulaşımı</h2>
+                <label for="yakitTuru">Yakıt Türü:</label>
+                <select id="yakitTuru">
+                    <option value="LPG">LPG</option>
+                    <option value="Benzin">Benzin</option>
+                    <option value="Dizel">Dizel</option>
+                </select><br>
+
+                <label for="yillikYakıt">Yıllık Toplam Yakıt (Litre):</label>
+                <button onclick="changeValue('yillikYakıt', -1)">-</button>
+                <input type="number" id="yillikYakıt" value="1000" min="0">
+                <button onclick="changeValue('yillikYakıt', 1)">+</button><br>
+            </div>
+
+        </div>
+
+        <div class="flex-container">
+
+            <!-- Elektrik Tüketimi -->
+            <div class="flex-item">
+                <h2><img src="/images/electric.png" alt="Icon" width="20"> Elektrik Tüketimi</h2>
+                <label for="elektrikTuketimi">Yıllık Toplam Tüketim (kWh):</label>
+                <button onclick="changeValue('elektrikTuketimi', -10)">-</button>
+                <input type="number" id="elektrikTuketimi" value="500" min="0">
+                <button onclick="changeValue('elektrikTuketimi', 10)">+</button><br>
+            </div>
+
+            <!-- Isınma Verileri -->
+            <div class="flex-item">
+                <h2><img src="/images/natural-gas.png" alt="Icon" width="20"> Isınma Verileri</h2>
+                <label for="isinmaYakitTuru">Yakıt Türü:</label>
+                <select id="isinmaYakitTuru">
+                    <option value="Doğalgaz">Doğalgaz</option>
+                    <option value="Biyogaz">Biyogaz</option>
+                    <option value="Odun kömürü">Odun Kömürü</option>
+                    <option value="Taş kömürü">Taş Kömürü</option>
+                    <option value="Kömür">Kömür</option>
+                    <option value="Lpg">LPG</option>
+                </select><br>
+
+                <label for="isinmaTuketim">Yıllık Toplam Tüketim (m<sup>3</sup>):</label>
+                <button onclick="changeValue('isinmaTuketim', -10)">-</button>
+                <input type="number" id="isinmaTuketim" value="500" min="0">
+                <button onclick="changeValue('isinmaTuketim', 10)">+</button><br>
+            </div>
+
+        </div>
+
+        <button onclick="hesapla()">Karbon Ayak İzini Hesapla</button>
+
+        <h3>Toplam Karbon Ayak İzi:  <span id="sonuc">0</span> Ton CO<sub>2</sub></h3>
+   
+        <p style="color: #d90808; text-align: justify;">Hesaplamaların Doğruluğu ve Veriler :
+            Hesaplamalar genellikle uluslararası çevre kuruluşlarının (IPCC, EPA) ve enerji ajanslarının (IEA) belirlediği emisyon faktörlerine dayanır. Hesaplayıcıların doğruluğu, kullandıkları verilerin güncelliğine ve kaynaklara bağlıdır.
+            
+            Eğer bu uygulama yerel bir veri kaynağına dayalıysa, kullanılan veriler resmi hükümet kuruluşlarının veya enerji tüketiminden sorumlu birimlerin açıkladığı emisyon faktörlerine dayanmalı. Aksi takdirde, uluslararası ortalamalar temel alınabilir.</p>
+   
+    </div>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>
